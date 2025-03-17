@@ -47,6 +47,15 @@ namespace PersonManagementAPI.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("ConnectedPersons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            ConnectedPersonId = -2,
+                            ConnectionType = "Colleague",
+                            PersonId = -1
+                        });
                 });
 
             modelBuilder.Entity("PersonManagementAPI.Models.Person", b =>
@@ -88,6 +97,28 @@ namespace PersonManagementAPI.Migrations
                         .IsUnique();
 
                     b.ToTable("Persons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            BirthDate = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CityId = 1,
+                            FirstName = "John",
+                            Gender = "Male",
+                            LastName = "Doe",
+                            PersonalNumber = "12345678901"
+                        },
+                        new
+                        {
+                            Id = -2,
+                            BirthDate = new DateTime(1995, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CityId = 2,
+                            FirstName = "Jane",
+                            Gender = "Male",
+                            LastName = "Smith",
+                            PersonalNumber = "98765432101"
+                        });
                 });
 
             modelBuilder.Entity("PersonManagementAPI.Models.PhoneNumber", b =>
@@ -114,6 +145,22 @@ namespace PersonManagementAPI.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("PhoneNumbers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            Number = "+123456789",
+                            PersonId = -1,
+                            PhoneType = "Mobile"
+                        },
+                        new
+                        {
+                            Id = -2,
+                            Number = "+987654321",
+                            PersonId = -2,
+                            PhoneType = "Home"
+                        });
                 });
 
             modelBuilder.Entity("PersonManagementAPI.Models.ConnectedPerson", b =>
